@@ -57,7 +57,7 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
     // get the getDOMNode and the value
     if(this.refs[ref] && this.refs[ref].refs && this.refs[ref].refs.input && this.refs[ref].refs.input.getDOMNode) {
       var input = this.refs[ref].refs.input.getDOMNode();
-      if(input.type === "checkbox" && !input.checked) return;
+      if(input.type === "checkbox") return input.checked;
       return input.value;
     }
   }
@@ -163,28 +163,28 @@ var Input = React.createClass({displayName: 'Input',
     var data = this.props.data;
     switch(this.type()) {
       case 'boolean':
-        return(React.DOM.span(null, CheckboxInput({ref: "input", data: {name: data.name, defaultChecked: data.value, className: "form-control", value: data.value}}), React.DOM.span({className: "alert alert-success"}, this.placeholder())))
+        return(React.DOM.span(null, CheckboxInput({ref: "input", data: {name: data.name, defaultChecked: data.value, className: this.props.options.className, value: data.value}}), React.DOM.span(null, this.placeholder())))
         break;
       case 'number':
-        return(NumberInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(NumberInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'date':
-        return(DateInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(DateInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'hidden':
-        return(HiddenInput({ref: "input", data: {name: data.name, value: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(HiddenInput({ref: "input", data: {name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'select':
-        return(SelectInput({ref: "input", data: {name: data.name, value: data.value, values: this.props.options.values , className: "form-control"}}))
+        return(SelectInput({ref: "input", data: {name: data.name, value: data.value, values: this.props.options.values , className: this.props.options.className}}))
         break;
       case 'password':
-        return(PasswordInput({ref: "input", data: {name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(PasswordInput({ref: "input", data: {name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'textarea':
-        return(TextareaInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(TextareaInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       default:
-        return(TextInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}}))
+        return(TextInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
     }
 
   },

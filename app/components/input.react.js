@@ -26,28 +26,28 @@ var Input = React.createClass({
     var data = this.props.data;
     switch(this.type()) {
       case 'boolean':
-        return(<span><CheckboxInput ref="input" data={{name: data.name, defaultChecked: data.value, className: "form-control", value: data.value}} /><span className="alert alert-success">{this.placeholder()}</span></span>)
+        return(<span><CheckboxInput ref="input" data={{name: data.name, defaultChecked: data.value, className: this.props.options.className, value: data.value}} /><span>{this.placeholder()}</span></span>)
         break;
       case 'number':
-        return(<NumberInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<NumberInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
       case 'date':
-        return(<DateInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<DateInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
       case 'hidden':
-        return(<HiddenInput ref="input" data={{name: data.name, value: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<HiddenInput ref="input" data={{name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
       case 'select':
-        return(<SelectInput ref="input" data={{name: data.name, value: data.value, values: this.props.options.values , className: "form-control"}} />)
+        return(<SelectInput ref="input" data={{name: data.name, value: data.value, values: this.props.options.values , className: this.props.options.className}} />)
         break;
       case 'password':
-        return(<PasswordInput ref="input" data={{name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<PasswordInput ref="input" data={{name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
       case 'textarea':
-        return(<TextareaInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<TextareaInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
       default:
-        return(<TextInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: "form-control"}} />)
+        return(<TextInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
     }
 
   },

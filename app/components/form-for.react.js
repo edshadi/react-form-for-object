@@ -56,7 +56,7 @@ module.exports = FormFor = React.createClass({
     // get the getDOMNode and the value
     if(this.refs[ref] && this.refs[ref].refs && this.refs[ref].refs.input && this.refs[ref].refs.input.getDOMNode) {
       var input = this.refs[ref].refs.input.getDOMNode();
-      if(input.type === "checkbox" && !input.checked) return;
+      if(input.type === "checkbox") return input.checked;
       return input.value;
     }
   }

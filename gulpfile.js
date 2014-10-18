@@ -9,8 +9,8 @@ var source = require('vinyl-source-stream');
 
 // Define some paths.
 var paths = {
-  app_js: ['./app/components/form-for.react.js'],
-  js: ['./app/components/*.js'],
+  app_js: ['./components/form-for.react.js'],
+  js: ['./components/*.js'],
 };
 
 // An example of a dependency task, it will be run before the css/js tasks.

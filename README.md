@@ -8,6 +8,14 @@ bower install react-form-for
 ```
 
 ### Useage
+FormFor will determine the type of input based on the your object. However,
+You can always override them in the options by passing a type (see example below).
+
+Supply a submit handler with onSubmit key in the options. On submit, FormFor will pass all of the form data
+to the callback you provided.
+
+FormFor will display all errors supplied to it in the errors prop.
+
 ```javascript
 var todo = {
   name: "Clean my room",
@@ -16,9 +24,25 @@ var todo = {
   list: "Home"
 }
 var formOptions: {
+  onSubmit: function(data) {console.log(data)},
   description: { type: 'textarea' },
   list: { type: 'select', values: ["Home", "Work"] }
 }
 
 <FormFor object={todo} options={formOptions} errors={[]} />
 ```
+
+### Input support
+
+- text
+- checkbox
+- number
+- hidden
+- select
+- password
+- textarea
+- date
+
+
+## Examples
+A working example can be found [here](./example)

@@ -4,6 +4,7 @@
 
 var Input = require('./input.react');
 var FormErrors = require('./form-errors.react');
+var SubmitInput = require('./submit-input.react');
 module.exports = FormFor = React.createClass({
   render: function() {
     if(Object.keys(this.props.object).length === 0) return(<div />);
@@ -11,7 +12,7 @@ module.exports = FormFor = React.createClass({
       <form onSubmit={this.handleSubmit}>
         <FormErrors errors={this.props.errors} />
         {this.inputs()}
-        <input type="submit"  value={this.submitText()} className="btn btn-default"/>
+        <SubmitInput ref="input" data={{value: this.submitText(), className: "btn btn-default"}} />
       </form>
     );
   },

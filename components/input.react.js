@@ -2,14 +2,18 @@
  * @jsx React.DOM
  */
 
- var TextInput = require('./text-input.react');
- var CheckboxInput = require('./checkbox-input.react');
- var NumberInput = require('./number-input.react');
- var HiddenInput = require('./hidden-input.react');
- var SelectInput = require('./select-input.react');
- var PasswordInput = require('./password-input.react');
- var TextareaInput = require('./textarea-input.react');
- var DateInput = require('./date-input.react');
+var TextInput = require('./text-input.react');
+var CheckboxInput = require('./checkbox-input.react');
+var NumberInput = require('./number-input.react');
+var HiddenInput = require('./hidden-input.react');
+var SelectInput = require('./select-input.react');
+var PasswordInput = require('./password-input.react');
+var TextareaInput = require('./textarea-input.react');
+var DateInput = require('./date-input.react');
+var ColorInput = require('./color-input.react');
+var DatetimeInput = require('./datetime-input.react');
+var EmailInput = require('./email-input.react');
+var SubmitInput = require('./submit-input.react');
 
 var Input = React.createClass({
   render: function() {
@@ -31,8 +35,20 @@ var Input = React.createClass({
       case 'number':
         return(<NumberInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
         break;
+      case 'submit':
+        return(<SubmitInput ref="input" data={{value: data.value, className: this.props.options.className}} />)
+        break;
+      case 'color':
+        return(<ColorInput ref="input" data={{name: data.name, defaultValue: data.value, className: this.props.options.className}} />)
+        break;
+      case 'email':
+        return(<EmailInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
+        break;
       case 'date':
         return(<DateInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
+        break;
+      case 'datetime':
+        return(<DatetimeInput ref="input" data={{name: data.name, defaultValue: data.value, className: this.props.options.className}} />)
         break;
       case 'hidden':
         return(<HiddenInput ref="input" data={{name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
@@ -56,6 +72,7 @@ var Input = React.createClass({
     if(this.props.options.type) type = this.props.options.type;
     if(this.isId()) type = 'hidden';
     if(this.isPassword()) type = 'password';
+    if(this.isEmail()) type = 'email';
     return type;
   },
   isId: function() {
@@ -64,6 +81,11 @@ var Input = React.createClass({
   },
   isPassword: function() {
     if(this.props.data.name === 'password' || this.props.data.name === 'password_confirmation') return true;
+    return false;
+  },
+  isEmail: function() {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(this.props.data.name === 'email' || re.test(this.props.data.value)) return true;
     return false;
   },
   placeholder: function() {

@@ -11,7 +11,10 @@ var TodoStore = {
       createAt: "2014-10-09",
       completed: false,
       password: "sweet todo",
-      list: "Home"
+      list: "Home",
+      email: "myemail@gmail.com",
+      color: "#fc5803",
+      due: new Date()
     }]
   },
   find: function(index) {
@@ -31,7 +34,9 @@ var App = React.createClass({displayName: 'App',
       onSubmit: this.handleSubmit,
       description: { type: 'textarea' },
       createAt: { type: 'date' },
-      list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] }
+      list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] },
+      color: { type: 'color' },
+      due: { type: 'datetime' }
     }
     return(
       React.DOM.div(null, 

@@ -42,7 +42,24 @@ var formOptions: {
 - password
 - textarea
 - date
+- datetime
+- email
+- submit
+- color
 
 
 ## Examples
 A working example can be found [here](./example)
+
+## TODO
+- file
+- image
+- month
+- radio
+- range
+- reset
+- search
+- tel
+- time
+- url
+- week

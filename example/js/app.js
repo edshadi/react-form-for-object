@@ -4,9 +4,13 @@
 var TodoStore = {
   all: function() {
     return [{
+      id: 1, // this will be hidden field by default.
       name: "Clean my room",
       description: "My room needs some serious cleaning",
+      priority: 3,
+      createAt: "2014-10-09",
       completed: false,
+      password: "sweet todo",
       list: "Home"
     }]
   },
@@ -26,6 +30,7 @@ var App = React.createClass({displayName: 'App',
     var formOptions = {
       onSubmit: this.handleSubmit,
       description: { type: 'textarea' },
+      createAt: { type: 'date' },
       list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] }
     }
     return(

@@ -13,7 +13,6 @@ var DateInput = require('./date-input.react');
 var ColorInput = require('./color-input.react');
 var DatetimeInput = require('./datetime-input.react');
 var EmailInput = require('./email-input.react');
-var SubmitInput = require('./submit-input.react');
 
 var Input = React.createClass({
   render: function() {
@@ -34,9 +33,6 @@ var Input = React.createClass({
         break;
       case 'number':
         return(<NumberInput ref="input" data={{name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)
-        break;
-      case 'submit':
-        return(<SubmitInput ref="input" data={{value: data.value, className: this.props.options.className}} />)
         break;
       case 'color':
         return(<ColorInput ref="input" data={{name: data.name, defaultValue: data.value, className: this.props.options.className}} />)

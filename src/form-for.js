@@ -201,7 +201,7 @@ var DateInput = require('./date-input.react');
 var ColorInput = require('./color-input.react');
 var DatetimeInput = require('./datetime-input.react');
 var EmailInput = require('./email-input.react');
-
+var TimeInput = require('./time-input.react');
 var Input = React.createClass({displayName: 'Input',
   render: function() {
     var data = this.props.data;
@@ -233,6 +233,9 @@ var Input = React.createClass({displayName: 'Input',
         break;
       case 'datetime':
         return(DatetimeInput({ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
+        break;
+      case 'time':
+        return(TimeInput({ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
         break;
       case 'hidden':
         return(HiddenInput({ref: "input", data: {name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
@@ -280,7 +283,7 @@ var Input = React.createClass({displayName: 'Input',
 
 module.exports = Input;
 
-},{"./checkbox-input.react":2,"./color-input.react":3,"./date-input.react":4,"./datetime-input.react":5,"./email-input.react":6,"./hidden-input.react":8,"./number-input.react":10,"./password-input.react":12,"./select-input.react":13,"./text-input.react":14,"./textarea-input.react":15}],10:[function(require,module,exports){
+},{"./checkbox-input.react":2,"./color-input.react":3,"./date-input.react":4,"./datetime-input.react":5,"./email-input.react":6,"./hidden-input.react":8,"./number-input.react":10,"./password-input.react":12,"./select-input.react":13,"./text-input.react":14,"./textarea-input.react":15,"./time-input.react":16}],10:[function(require,module,exports){
 /**
  * @jsx React.DOM
  */
@@ -386,5 +389,22 @@ var TextareaInput = React.createClass({displayName: 'TextareaInput',
 
 });
 module.exports = TextareaInput;
+
+},{}],16:[function(require,module,exports){
+/**
+ * @jsx React.DOM
+ */
+
+var TimeInput = React.createClass({displayName: 'TimeInput',
+  render: function() {
+    var data = this.props.data;
+    return (
+      React.DOM.input({ref: data.name, type: "time", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+    );
+  }
+
+});
+
+module.exports = TimeInput;
 
 },{}]},{},[1]);

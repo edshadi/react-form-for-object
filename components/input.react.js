@@ -13,7 +13,7 @@ var DateInput = require('./date-input.react');
 var ColorInput = require('./color-input.react');
 var DatetimeInput = require('./datetime-input.react');
 var EmailInput = require('./email-input.react');
-
+var TimeInput = require('./time-input.react');
 var Input = React.createClass({
   render: function() {
     var data = this.props.data;
@@ -45,6 +45,9 @@ var Input = React.createClass({
         break;
       case 'datetime':
         return(<DatetimeInput ref="input" data={{name: data.name, defaultValue: data.value, className: this.props.options.className}} />)
+        break;
+      case 'time':
+        return(<TimeInput ref="input" data={{name: data.name, defaultValue: data.value, className: this.props.options.className}} />)
         break;
       case 'hidden':
         return(<HiddenInput ref="input" data={{name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}} />)

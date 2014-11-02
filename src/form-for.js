@@ -124,7 +124,7 @@ var DatetimeInput = React.createClass({displayName: 'DatetimeInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "datetime", defaultValue: data.defaultValue, className: data.className})
+      React.DOM.input({ref: data.name, type: "datetime-local", defaultValue: data.defaultValue, className: data.className})
     );
   }
 

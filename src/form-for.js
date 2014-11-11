@@ -7,12 +7,12 @@ var Input = require('./input.react');
 var FormErrors = require('./form-errors.react');
 module.exports = FormFor = React.createClass({displayName: 'FormFor',
   render: function() {
-    if(Object.keys(this.props.object).length === 0) return(React.DOM.div(null));
+    if(Object.keys(this.props.object).length === 0) return(React.createElement("div", null));
     return (
-      React.DOM.form({onSubmit: this.handleSubmit}, 
-        FormErrors({errors: this.props.errors}), 
+      React.createElement("form", {onSubmit: this.handleSubmit}, 
+        React.createElement(FormErrors, {errors: this.props.errors}), 
         this.inputs(), 
-        React.DOM.input({type: "submit", value: this.submitText(), className: "btn btn-default"})
+        React.createElement("input", {type: "submit", value: this.submitText(), className: "btn btn-default"})
       )
     );
   },
@@ -23,7 +23,7 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
       var value = object[key];
       var dataForInput = {value: value, name: key}
       var options = this.options()[key] || {};
-      inputs.push(Input({key: key, ref: key, data: dataForInput, options: options}));
+      inputs.push(React.createElement(Input, {key: key, ref: key, data: dataForInput, options: options}));
     }.bind(this));
     return inputs;
   },
@@ -73,7 +73,7 @@ var CheckboxInput = React.createClass({displayName: 'CheckboxInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "checkbox", defaultChecked: data.defaultChecked, className: data.className, value: data.value})
+      React.createElement("input", {ref: data.name, type: "checkbox", defaultChecked: data.defaultChecked, className: data.className, value: data.value})
     );
   }
 
@@ -90,7 +90,7 @@ var ColorInput = React.createClass({displayName: 'ColorInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, name: data.name, type: "color", defaultValue: data.defaultValue, className: data.className})
+      React.createElement("input", {ref: data.name, name: data.name, type: "color", defaultValue: data.defaultValue, className: data.className})
     );
   }
 
@@ -107,7 +107,7 @@ var DateInput = React.createClass({displayName: 'DateInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "date", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "date", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -124,7 +124,7 @@ var DatetimeInput = React.createClass({displayName: 'DatetimeInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "datetime-local", defaultValue: data.defaultValue, className: data.className})
+      React.createElement("input", {ref: data.name, type: "datetime-local", defaultValue: data.defaultValue, className: data.className})
     );
   }
 
@@ -141,7 +141,7 @@ var EmailInput = React.createClass({displayName: 'EmailInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "email", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "email", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -159,10 +159,10 @@ var FormErrors = React.createClass({displayName: 'FormErrors',
   render: function() {
     var errors = [];
     this.props.errors.forEach(function(err) {
-      errors.push(React.DOM.li(null, err))
+      errors.push(React.createElement("li", null, err))
     })
     return (
-      React.DOM.ul({className: "form-errors"}, errors)
+      React.createElement("ul", {className: "form-errors"}, errors)
     );
   }
 });
@@ -178,7 +178,7 @@ var HiddenInput = React.createClass({displayName: 'HiddenInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "hidden", value: data.value, className: data.className})
+      React.createElement("input", {ref: data.name, type: "hidden", value: data.value, className: data.className})
     );
   }
 
@@ -206,8 +206,8 @@ var Input = React.createClass({displayName: 'Input',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.div(null, 
-        React.DOM.div({className: "form-group"}, 
+      React.createElement("div", null, 
+        React.createElement("div", {className: "form-group"}, 
           this.input()
         )
       )
@@ -217,40 +217,40 @@ var Input = React.createClass({displayName: 'Input',
     var data = this.props.data;
     switch(this.type()) {
       case 'boolean':
-        return(React.DOM.span(null, CheckboxInput({ref: "input", data: {name: data.name, defaultChecked: data.value, className: this.props.options.className, value: data.value}}), React.DOM.span(null, this.placeholder())))
+        return(React.createElement("span", null, React.createElement(CheckboxInput, {ref: "input", data: {name: data.name, defaultChecked: data.value, className: this.props.options.className, value: data.value}}), React.createElement("span", null, this.placeholder())))
         break;
       case 'number':
-        return(NumberInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(NumberInput, {ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'color':
-        return(ColorInput({ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
+        return(React.createElement(ColorInput, {ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
         break;
       case 'email':
-        return(EmailInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(EmailInput, {ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'date':
-        return(DateInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(DateInput, {ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'datetime':
-        return(DatetimeInput({ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
+        return(React.createElement(DatetimeInput, {ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
         break;
       case 'time':
-        return(TimeInput({ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
+        return(React.createElement(TimeInput, {ref: "input", data: {name: data.name, defaultValue: data.value, className: this.props.options.className}}))
         break;
       case 'hidden':
-        return(HiddenInput({ref: "input", data: {name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(HiddenInput, {ref: "input", data: {name: data.name, value: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'select':
-        return(SelectInput({ref: "input", data: {name: data.name, value: data.value, values: this.props.options.values , className: this.props.options.className}}))
+        return(React.createElement(SelectInput, {ref: "input", data: {name: data.name, value: data.value, values: this.props.options.values , className: this.props.options.className}}))
         break;
       case 'password':
-        return(PasswordInput({ref: "input", data: {name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(PasswordInput, {ref: "input", data: {name: data.name, defaultChecked: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       case 'textarea':
-        return(TextareaInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(TextareaInput, {ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
         break;
       default:
-        return(TextInput({ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
+        return(React.createElement(TextInput, {ref: "input", data: {name: data.name, defaultValue: data.value, placeholder: this.placeholder(), className: this.props.options.className}}))
     }
 
   },
@@ -292,7 +292,7 @@ var NumberInput = React.createClass({displayName: 'NumberInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "number", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "number", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -309,7 +309,7 @@ var OptionForSelect = React.createClass({displayName: 'OptionForSelect',
 
   render: function() {
     return (
-      React.DOM.option({value: this.props.value}, this.props.show)
+      React.createElement("option", {value: this.props.value}, this.props.show)
     );
   }
 
@@ -325,7 +325,7 @@ var PasswordInput = React.createClass({displayName: 'PasswordInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "password", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "password", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -345,10 +345,10 @@ var SelectInput = React.createClass({displayName: 'SelectInput',
     var data = this.props.data;
     var options = [];
     data.values.forEach(function(value) {
-      options.push(OptionForSelect({key: value.value, value: value.value, show: value.show}))
+      options.push(React.createElement(OptionForSelect, {key: value.value, value: value.value, show: value.show}))
     }.bind(this))
     return (
-      React.DOM.select({ref: data.name, defaultValue: data.value, className: data.className, id: data.id}, 
+      React.createElement("select", {ref: data.name, defaultValue: data.value, className: data.className, id: data.id}, 
         options
       )
     );
@@ -366,7 +366,7 @@ var TextInput = React.createClass({displayName: 'TextInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "text", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "text", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -383,7 +383,7 @@ var TextareaInput = React.createClass({displayName: 'TextareaInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.textarea({ref: data.name, defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("textarea", {ref: data.name, defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 
@@ -399,7 +399,7 @@ var TimeInput = React.createClass({displayName: 'TimeInput',
   render: function() {
     var data = this.props.data;
     return (
-      React.DOM.input({ref: data.name, type: "time", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
+      React.createElement("input", {ref: data.name, type: "time", defaultValue: data.defaultValue, placeholder: data.placeholder, className: data.className})
     );
   }
 

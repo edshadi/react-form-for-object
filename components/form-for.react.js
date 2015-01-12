@@ -4,7 +4,7 @@ module.exports = FormFor = React.createClass({
   render: function() {
     if(Object.keys(this.props.object).length === 0) return(<div />);
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="form-for">
         <FormErrors errors={this.props.errors} />
         {this.inputs()}
         <input type="submit"  value={this.submitText()} className="btn btn-default"/>

@@ -5,7 +5,7 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
   render: function() {
     if(Object.keys(this.props.object).length === 0) return(React.createElement("div", null));
     return (
-      React.createElement("form", {onSubmit: this.handleSubmit}, 
+      React.createElement("form", {onSubmit: this.handleSubmit, className: "form-for"}, 
         React.createElement(FormErrors, {errors: this.props.errors}), 
         this.inputs(), 
         React.createElement("input", {type: "submit", value: this.submitText(), className: "btn btn-default"}), 

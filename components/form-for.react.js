@@ -30,7 +30,7 @@ module.exports = FormFor = React.createClass({
     var submit = this.options().submit;
     if(submit && submit.value) return submit.value
     submit = this.props.object.id ? 'Update' : 'Create';
-    if(this.options().name) submit = submit + ' ' + this.options().name;
+    if(this.options().objectName) submit = submit + ' ' + this.options().objectName;
     return submit;
   },
   handleSubmit: function(e) {

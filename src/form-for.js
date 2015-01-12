@@ -8,7 +8,8 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
       React.createElement("form", {onSubmit: this.handleSubmit}, 
         React.createElement(FormErrors, {errors: this.props.errors}), 
         this.inputs(), 
-        React.createElement("input", {type: "submit", value: this.submitText(), className: "btn btn-default"})
+        React.createElement("input", {type: "submit", value: this.submitText(), className: "btn btn-default"}), 
+        React.createElement("input", {type: "button", value: "Cancel", onClick: this.options().onCancel})
       )
     );
   },

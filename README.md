@@ -24,6 +24,7 @@ var todo = {
 }
 var formOptions: {
   onSubmit: function(data, utils) {console.log(data)},
+  onCancel: function(data) { //do something like change state to editing false }
   description: { type: 'textarea' },
   list: { type: 'select', values: ["Home", "Work"] }
 }

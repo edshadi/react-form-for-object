@@ -8,6 +8,7 @@ module.exports = FormFor = React.createClass({
         <FormErrors errors={this.props.errors} />
         {this.inputs()}
         <input type="submit"  value={this.submitText()} className="btn btn-default"/>
+        <input type="button" value="Cancel" onClick={this.options().onCancel} />
       </form>
     );
   },

@@ -49,7 +49,11 @@ module.exports = FormFor = React.createClass({
   },
   renderCancelButton: function() {
     if(!this.options().onCancel) return;
-    return(<input type="button" value="Cancel" onClick={this.options().onCancel} />);
+    return(<input type="button" value="Cancel" onClick={this.handleCancel} />);
+  },
+  handleCancel: function() {
+    this.clearInputs();
+    this.options().onCancel();
   },
   getInputValue: function(ref) {
     // find the ref component

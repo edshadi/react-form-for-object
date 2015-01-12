@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var TextInput = require('./text-input.react');
 var CheckboxInput = require('./checkbox-input.react');
 var NumberInput = require('./number-input.react');

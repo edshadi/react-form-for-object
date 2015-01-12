@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var DatetimeInput = React.createClass({
   render: function() {
     var data = this.props.data;

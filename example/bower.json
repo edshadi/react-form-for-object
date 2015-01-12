@@ -4,9 +4,8 @@
     "Ed Shadi <edshadi@gmail.com>"
   ],
   "description": "React FormFor example useage",
-  "dependencies": {
-    "react-form-for": "../src",
-    "react": "~0.11.2"
+  "devDependencies": {
+    "react": "~0.12.2",
+    "react-form-for": "../src"
   }
 }
-,

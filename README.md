@@ -11,8 +11,7 @@ bower install react-form-for
 FormFor will determine the type of input based on the your object. However,
 You can always override them in the options by passing a type (see example below).
 
-Supply a submit handler with onSubmit key in the options. On submit, FormFor will pass all of the form data
-to the callback you provided.
+Supply a submit handler with onSubmit key in the options. On submit, FormFor will pass all of the form data to the callback you provided.
 
 FormFor will display all errors supplied to it in the errors prop.
 
@@ -24,7 +23,7 @@ var todo = {
   list: "Home"
 }
 var formOptions: {
-  onSubmit: function(data) {console.log(data)},
+  onSubmit: function(data, utils) {console.log(data)},
   description: { type: 'textarea' },
   list: { type: 'select', values: ["Home", "Work"] }
 }
@@ -47,6 +46,11 @@ var formOptions: {
 - submit
 - color
 
+### Utilities
+When we call your submitHandler, we pass it a utils object that will have
+some useful functions that you could use. Currently, we support the following
+utility functions:
+- clearInputs: use this to clear all input fields after success.
 
 ## Examples
 A working example can be found [here](./example)

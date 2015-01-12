@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var RadioInput = React.createClass({
   render: function() {
     var data = this.props.data;

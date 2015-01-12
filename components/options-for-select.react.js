@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var OptionForSelect = React.createClass({
 
   render: function() {

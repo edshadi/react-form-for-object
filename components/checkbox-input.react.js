@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var CheckboxInput = React.createClass({
   render: function() {
     var data = this.props.data;

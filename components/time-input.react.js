@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var TimeInput = React.createClass({
   render: function() {
     var data = this.props.data;

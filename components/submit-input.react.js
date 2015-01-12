@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var SubmitInput = React.createClass({
   render: function() {
     var data = this.props.data;

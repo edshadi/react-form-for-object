@@ -1,7 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
 var Input = require('./input.react');
 var FormErrors = require('./form-errors.react');
 module.exports = FormFor = React.createClass({
@@ -44,9 +40,10 @@ module.exports = FormFor = React.createClass({
       Object.keys(this.refs).forEach(function(ref) {
         var value = this.getInputValue(ref);
         data[ref] = value;
-      }.bind(this))
-      console.log(data)
-      submitHandler(data);
+      }.bind(this));
+      submitHandler(data, {clearInputs: this.clearInputs});
+    } else {
+      console.log("You must pass an onSubmit function in your options.");
     }
   },
   getInputValue: function(ref) {
@@ -59,6 +56,14 @@ module.exports = FormFor = React.createClass({
       if(input.type === "checkbox") return input.checked;
       return input.value;
     }
+  },
+  // Utility function to clear inputs.
+  clearInputs: function() {
+    Object.keys(this.refs).forEach(function(ref) {
+      if(this.refs[ref] && this.refs[ref].refs && this.refs[ref].refs.input && this.refs[ref].refs.input.getDOMNode) {
+        this.refs[ref].refs.input.getDOMNode().value = "";
+      }
+    }.bind(this));
   }
 
 });

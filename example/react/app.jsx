@@ -1,6 +1,3 @@
-/**
- * @jsx React.DOM
- */
 var TodoStore = {
   all: function() {
     return [{
@@ -54,7 +51,7 @@ var App = React.createClass({
   }
 });
 
-React.renderComponent(
+React.render(
   <App />,
   document.body
 );

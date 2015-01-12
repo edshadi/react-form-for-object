@@ -1,8 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
-
 var OptionForSelect = require('./options-for-select.react')
 var SelectInput = React.createClass({
   render: function() {

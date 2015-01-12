@@ -1,8 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
-
 var FormErrors = React.createClass({
   render: function() {
     var errors = [];

@@ -1,6 +1,3 @@
-/**
- * @jsx React.DOM
- */
 var TodoStore = {
   all: function() {
     return [{
@@ -21,7 +18,7 @@ var TodoStore = {
     return this.all()[index];
   }
 }
-var App = React.createClass({displayName: 'App',
+var App = React.createClass({displayName: "App",
   getInitialState: function() {
     return {
       errors: [],
@@ -39,22 +36,23 @@ var App = React.createClass({displayName: 'App',
       due: { type: 'datetime' }
     }
     return(
-      React.DOM.div(null, 
-        React.DOM.span(null, this.state.alert), 
-        FormFor({object: TodoStore.find(0), options: formOptions, errors: this.state.errors})
+      React.createElement("div", null,
+        React.createElement("span", null, this.state.alert),
+        React.createElement(FormFor, {object: TodoStore.find(0), options: formOptions, errors: this.state.errors})
       )
     )
   },
 
-  handleSubmit: function(data) {
+  handleSubmit: function(data, utils) {
     // this is where you call an action, e.g. TodoActions.createTodo. For this example
     // I will just simulate errors and success here.
     if(data.name === "") return this.setState({errors: ["name can't be blank"]});
+    utils.clearInputs();
     return this.setState({alert: "Success!", errors: []});
   }
 });
 
-React.renderComponent(
-  App(null),
+React.render(
+  React.createElement(App, null),
   document.body
 );

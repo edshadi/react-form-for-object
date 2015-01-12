@@ -9,7 +9,7 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
         React.createElement(FormErrors, {errors: this.props.errors}), 
         this.inputs(), 
         React.createElement("input", {type: "submit", value: this.submitText(), className: "btn btn-default"}), 
-        React.createElement("input", {type: "button", value: "Cancel", onClick: this.options().onCancel})
+      this.renderCancelButton()
       )
     );
   },
@@ -47,6 +47,10 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
     } else {
       console.log("You must pass an onSubmit function in your options.");
     }
+  },
+  renderCancelButton: function() {
+    if(!this.options().onCancel) return;
+    return(React.createElement("input", {type: "button", value: "Cancel", onClick: this.options().onCancel}));
   },
   getInputValue: function(ref) {
     // find the ref component

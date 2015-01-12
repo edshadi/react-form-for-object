@@ -29,6 +29,7 @@ var App = React.createClass({
   render: function() {
     var formOptions = {
       onSubmit: this.handleSubmit,
+      onCancel: this.handleCancel,
       description: { type: 'textarea' },
       createAt: { type: 'date' },
       list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] },
@@ -48,6 +49,9 @@ var App = React.createClass({
     // I will just simulate errors and success here.
     if(data.name === "") return this.setState({errors: ["name can't be blank"]});
     return this.setState({alert: "Success!", errors: []});
+  },
+  handleCancel: function() {
+    console.log('cancelling');
   }
 });
 

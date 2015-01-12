@@ -29,6 +29,7 @@ var App = React.createClass({displayName: "App",
   render: function() {
     var formOptions = {
       onSubmit: this.handleSubmit,
+      onCancel: this.handleCancel,
       description: { type: 'textarea' },
       createAt: { type: 'date' },
       list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] },
@@ -36,19 +37,21 @@ var App = React.createClass({displayName: "App",
       due: { type: 'datetime' }
     }
     return(
-      React.createElement("div", null,
-        React.createElement("span", null, this.state.alert),
+      React.createElement("div", null, 
+        React.createElement("span", null, this.state.alert), 
         React.createElement(FormFor, {object: TodoStore.find(0), options: formOptions, errors: this.state.errors})
       )
     )
   },
 
-  handleSubmit: function(data, utils) {
+  handleSubmit: function(data) {
     // this is where you call an action, e.g. TodoActions.createTodo. For this example
     // I will just simulate errors and success here.
     if(data.name === "") return this.setState({errors: ["name can't be blank"]});
-    utils.clearInputs();
     return this.setState({alert: "Success!", errors: []});
+  },
+  handleCancel: function() {
+    console.log('cancelling');
   }
 });
 

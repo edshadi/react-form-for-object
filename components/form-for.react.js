@@ -8,7 +8,7 @@ module.exports = FormFor = React.createClass({
         <FormErrors errors={this.props.errors} />
         {this.inputs()}
         <input type="submit"  value={this.submitText()} className="btn btn-default"/>
-        <input type="button" value="Cancel" onClick={this.options().onCancel} />
+      {this.renderCancelButton()}
       </form>
     );
   },
@@ -46,6 +46,10 @@ module.exports = FormFor = React.createClass({
     } else {
       console.log("You must pass an onSubmit function in your options.");
     }
+  },
+  renderCancelButton: function() {
+    if(!this.options().onCancel) return;
+    return(<input type="button" value="Cancel" onClick={this.options().onCancel} />);
   },
   getInputValue: function(ref) {
     // find the ref component

@@ -14,6 +14,20 @@ var TodoStore = {
       due: new Date()
     }]
   },
+  new: function() {
+    return {
+      name: null,
+      description: null,
+      priority: null,
+      createAt: null,
+      completed: null,
+      password: null,
+      list: null,
+      email: null,
+      color: null,
+      due: new Date()
+    }
+  },
   find: function(index) {
     return this.all()[index];
   }
@@ -39,7 +53,8 @@ var App = React.createClass({displayName: "App",
     return(
       React.createElement("div", null, 
         React.createElement("span", null, this.state.alert), 
-        React.createElement(FormFor, {object: TodoStore.find(0), options: formOptions, errors: this.state.errors})
+        React.createElement(FormFor, {object: TodoStore.find(0), options: formOptions, errors: this.state.errors}), 
+        React.createElement(FormFor, {object: TodoStore.new(), options: formOptions, errors: this.state.errors})
       )
     )
   },

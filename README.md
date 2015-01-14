@@ -1,6 +1,7 @@
-## React Form For
+## React Form For Object
 
-Rails inspired form builder that makes building forms in react a breeze.
+No-effort, simple ReactJS form builder for Javascript objects.
+
 Simply pass FormFor a javascript object and it will display the form and handle
 data for you. You can always override defaults by passing FormFor options.
 
@@ -8,7 +9,7 @@ There is a full working example [here](./example)
 
 ### Install
 ```bash
-bower install react-form-for
+bower install react-form-for-object
 ```
 
 ### Usage

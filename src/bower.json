@@ -1,10 +1,10 @@
 {
   "name": "react-form-for",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     "Ed Shadi <edshadi@gmail.com>"
   ],
-  "description": "Rails inspired form builder that makes building forms in react a breeze.",
+  "description": "Rails inspired form builder that makes building forms in React a breeze.",
   "main": "src/form-for.js",
   "keywords": [
     "react",
@@ -14,7 +14,7 @@
     "flux"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

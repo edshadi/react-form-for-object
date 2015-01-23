@@ -20,7 +20,7 @@ module.exports = FormFor = React.createClass({displayName: 'FormFor',
       var value = object[key];
       var dataForInput = {value: value, name: key}
       var options = this.options()[key] || {};
-      inputs.push(React.createElement(Input, {key: key, ref: key, data: dataForInput, options: options}));
+      inputs.push(React.createElement(Input, {key: key, ref: key, data: dataForInput, options: options, label: this.options().labels}));
     }.bind(this));
     return inputs;
   },
@@ -183,16 +183,23 @@ var ColorInput = require('./color-input.react');
 var DatetimeInput = require('./datetime-input.react');
 var EmailInput = require('./email-input.react');
 var TimeInput = require('./time-input.react');
+var Label = require('./label.react');
+
 var Input = React.createClass({displayName: 'Input',
   render: function() {
     var data = this.props.data;
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "form-group"}, 
+          this.label(), 
           this.input()
         )
       )
     );
+  },
+  label: function() {
+    if(!this.props.label) return;
+    return(React.createElement(Label, {label: this.placeholder()}))
   },
   input: function() {
     var data = this.props.data;
@@ -264,7 +271,19 @@ var Input = React.createClass({displayName: 'Input',
 
 module.exports = Input;
 
-},{"./checkbox-input.react":2,"./color-input.react":3,"./date-input.react":4,"./datetime-input.react":5,"./email-input.react":6,"./hidden-input.react":8,"./number-input.react":10,"./password-input.react":12,"./select-input.react":13,"./text-input.react":14,"./textarea-input.react":15,"./time-input.react":16}],10:[function(require,module,exports){
+},{"./checkbox-input.react":2,"./color-input.react":3,"./date-input.react":4,"./datetime-input.react":5,"./email-input.react":6,"./hidden-input.react":8,"./label.react":10,"./number-input.react":11,"./password-input.react":13,"./select-input.react":14,"./text-input.react":15,"./textarea-input.react":16,"./time-input.react":17}],10:[function(require,module,exports){
+var Label = React.createClass({displayName: 'Label',
+  render: function() {
+    return (
+      React.createElement("label", {className: "form-for-label"}, this.props.label)
+    );
+  }
+
+});
+
+module.exports = Label;
+
+},{}],11:[function(require,module,exports){
 var NumberInput = React.createClass({displayName: 'NumberInput',
   render: function() {
     var data = this.props.data;
@@ -277,7 +296,7 @@ var NumberInput = React.createClass({displayName: 'NumberInput',
 
 module.exports = NumberInput;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var OptionForSelect = React.createClass({displayName: 'OptionForSelect',
 
   render: function() {
@@ -289,7 +308,7 @@ var OptionForSelect = React.createClass({displayName: 'OptionForSelect',
 });
 module.exports = OptionForSelect;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var PasswordInput = React.createClass({displayName: 'PasswordInput',
   render: function() {
     var data = this.props.data;
@@ -302,7 +321,7 @@ var PasswordInput = React.createClass({displayName: 'PasswordInput',
 
 module.exports = PasswordInput;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var OptionForSelect = require('./options-for-select.react')
 var SelectInput = React.createClass({displayName: 'SelectInput',
   render: function() {
@@ -321,7 +340,7 @@ var SelectInput = React.createClass({displayName: 'SelectInput',
 });
 module.exports = SelectInput;
 
-},{"./options-for-select.react":11}],14:[function(require,module,exports){
+},{"./options-for-select.react":12}],15:[function(require,module,exports){
 var TextInput = React.createClass({displayName: 'TextInput',
   render: function() {
     var data = this.props.data;
@@ -334,7 +353,7 @@ var TextInput = React.createClass({displayName: 'TextInput',
 
 module.exports = TextInput;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var TextareaInput = React.createClass({displayName: 'TextareaInput',
   render: function() {
     var data = this.props.data;
@@ -346,7 +365,7 @@ var TextareaInput = React.createClass({displayName: 'TextareaInput',
 });
 module.exports = TextareaInput;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var TimeInput = React.createClass({displayName: 'TimeInput',
   render: function() {
     var data = this.props.data;

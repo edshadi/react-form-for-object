@@ -19,7 +19,7 @@ module.exports = FormFor = React.createClass({
       var value = object[key];
       var dataForInput = {value: value, name: key}
       var options = this.options()[key] || {};
-      inputs.push(<Input key={key} ref={key} data={dataForInput} options={options}/>);
+      inputs.push(<Input key={key} ref={key} data={dataForInput} options={options} label={this.options().labels} />);
     }.bind(this));
     return inputs;
   },

@@ -36,6 +36,7 @@ var todo = {
   list: "Home"
 }
 var formOptions: {
+  labels: true, // by default we use placeholders, but you can turn on labels and we will use both.
   onSubmit: function(data, utils) {console.log(data)},
   onCancel: function(data) { //do something like change state to editing false }
   description: { type: 'textarea' },
@@ -55,7 +56,11 @@ based on your object attributes.
 - value
 - onSubmit
 - onCancel
+- labels: turned off by default.
+- placeholder: we use the name of the field, you can override that (this also affects label, if labels are turned on).
 
+### Labels
+You can pass a labels: true attribute in the form options. We will then
 
 ### Input support
 

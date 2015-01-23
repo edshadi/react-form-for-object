@@ -10,16 +10,23 @@ var ColorInput = require('./color-input.react');
 var DatetimeInput = require('./datetime-input.react');
 var EmailInput = require('./email-input.react');
 var TimeInput = require('./time-input.react');
+var Label = require('./label.react');
+
 var Input = React.createClass({
   render: function() {
     var data = this.props.data;
     return (
       <div>
         <div className="form-group">
+          {this.label()}
           {this.input()}
         </div>
       </div>
     );
+  },
+  label: function() {
+    if(!this.props.label) return;
+    return(<Label label={this.placeholder()} />)
   },
   input: function() {
     var data = this.props.data;

@@ -42,6 +42,8 @@ var App = React.createClass({
 
   render: function() {
     var formOptions = {
+      // Uncomment that if you want to display labels for the fields, it's off by default
+      // labels: true,
       onSubmit: this.handleSubmit,
       onCancel: this.handleCancel,
       description: { type: 'textarea' },

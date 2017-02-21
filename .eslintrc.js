@@ -1,13 +1,17 @@
 module.exports = {
   "parser": "babel-eslint",
   "extends": "airbnb",
-    "plugins": [
-        "react"
-    ],
-    "env": {
-      "jquery": true
-    },
-     "ecmaFeatures": {
-       "experimentalDecorators": true,
-     }
+  "plugins": [
+    "react",
+    "mocha"
+  ],
+  "rules": {
+    "mocha/no-exclusive-tests": "error"
+  },
+  "env": {
+    "jquery": true
+  },
+  "ecmaFeatures": {
+    "experimentalDecorators": true,
+  }
 };

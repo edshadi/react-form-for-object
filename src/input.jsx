@@ -22,69 +22,70 @@ export default class Input extends React.Component {
 
   input() {
     const { data, options } = this.props;
+    options.placeholder = this.placeholder();
     let input;
     switch (this.type()) {
       case 'boolean':
         input = (
           <span>
-            <CheckboxInput onChange="input" data={data} options={options} />
+            <CheckboxInput onChange={this.props.onChange} data={data} options={options} />
             <span>{this.placeholder()}</span>
           </span>
         );
         break;
       case 'number':
         input = (
-          <NumberInput onChange="input" data={data} options={options} />
+          <NumberInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'color':
         input = (
-          <ColorInput onChange="input" data={data} options={options} />
+          <ColorInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'email':
         input = (
-          <EmailInput onChange="input" data={data} options={options} />
+          <EmailInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'date':
         input = (
-          <DateInput onChange="input" data={data} options={options} />
+          <DateInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'datetime':
         input = (
-          <DatetimeInput onChange="input" data={data} options={options} />
+          <DatetimeInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'time':
         input = (
-          <TimeInput onChange="input" data={data} options={options} />
+          <TimeInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'hidden':
         input = (
-          <HiddenInput onChange="input" data={data} options={options} />
+          <HiddenInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'select':
         input = (
-          <SelectInput onChange="input" data={data} options={options} />
+          <SelectInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'password':
         input = (
-          <PasswordInput onChange="input" data={data} options={options} />
+          <PasswordInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       case 'textarea':
         input = (
-          <TextareaInput onChange="input" data={data} options={options} />
+          <TextareaInput onChange={this.props.onChange} data={data} options={options} />
         );
         break;
       default:
         input = (
-          <TextInput onChange="input" data={data} options={options} />
+          <TextInput onChange={this.props.onChange} data={data} options={options} />
         );
     }
     return input;
@@ -96,6 +97,8 @@ export default class Input extends React.Component {
     if (this.isId()) type = 'hidden';
     if (this.isPassword()) type = 'password';
     if (this.isEmail()) type = 'email';
+    // console.log('data', this.props.data.value)
+    // console.log('type', type)
     return type;
   }
 
@@ -134,6 +137,7 @@ Input.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
   label: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };
 
 Input.defaultProps = {

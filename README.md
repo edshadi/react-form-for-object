@@ -9,7 +9,7 @@ There is a full working example [here](./example)
 
 ### Install
 ```bash
-bower install react-form-for-object
+npm install react-form-for-object
 ```
 
 ### Usage
@@ -29,21 +29,27 @@ to text input.
 By default, id attributes are built as hidden input.
 
 ```javascript
-var todo = {
+import FormFor from '../../src/form-for';
+
+const todo = {
   name: "Clean my room",
   description: "My room needs some serious cleaning",
   completed: false,
-  list: "Home"
-}
-var formOptions: {
-  labels: true, // by default we use placeholders, but you can turn on labels and we will use both.
-  onSubmit: function(data, utils) {console.log(data)},
-  onCancel: function(data) { //do something like change state to editing false }
-  description: { type: 'textarea' },
-  list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] }
-}
+  list: "Home",
+};
 
-<FormFor object={todo} options={formOptions} errors={[]} />
+const inputOptions = {
+  labels: true, // by default we use placeholders, but you can turn on labels and we will use both.
+  description: { type: 'textarea' },
+  list: { type: 'select', values: [{value:"Home", show: "Home"}, {value:"Work", show: "Work"}] },
+};
+
+<FormFor
+  object={todo}
+  inputOptions={inputOptions}
+  onSubmit={ (data) => console.log(data) }
+  onCancel={ (data) => console.log(data) }
+/>
 
 ```
 #### How to use the options
@@ -54,13 +60,12 @@ use the name of the attribute as the key (see example above). Currently you can 
 based on your object attributes.
 - className
 - value
-- onSubmit
-- onCancel
 - labels: turned off by default.
 - placeholder: we use the name of the field, you can override that (this also affects label, if labels are turned on).
 
 ### Labels
-You can pass a labels: true attribute in the form options. We will then
+You can pass a labels: true attribute in the form options. We will then use
+the input placeholder (if you specified it in the options) or input name as the label.
 
 ### Input support
 
@@ -76,12 +81,6 @@ You can pass a labels: true attribute in the form options. We will then
 - email
 - submit
 - color
-
-### Utilities
-When we call your submitHandler, we pass it a utils object that will have
-some useful functions that you could use. Currently, we support the following
-utility functions:
-- clearInputs: use this to clear all input fields after success.
 
 ## Examples
 A working example can be found [here](./example)

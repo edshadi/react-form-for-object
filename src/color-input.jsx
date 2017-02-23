@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 
 export default function ColorInput(props) {
-  const { name, className, defaultValue } = props.data;
+  const { name, value } = props.data;
   return (
     <input
       name={name}
       type="color"
-      defaultValue={defaultValue}
-      className={className}
+      value={value}
+      className={props.options.className}
+      onChange={props.onChange}
     />
   );
 }
@@ -15,6 +16,7 @@ export default function ColorInput(props) {
 ColorInput.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 ColorInput.defaultProps = {

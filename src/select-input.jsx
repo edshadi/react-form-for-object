@@ -2,12 +2,18 @@ import React, { PropTypes } from 'react';
 import OptionForSelect from './options-for-select';
 
 export default function SelectInput(props) {
-  const { name, value, className, id } = props.data;
+  const { name, value, id } = props.data;
   const options = props.options.values.map(
     v => <OptionForSelect key={v.value} value={v.value} label={v.label} />
   );
   return (
-    <select defaultValue={value} className={className} id={id}>
+    <select
+      name={name}
+      value={value}
+      className={props.options.className}
+      id={id}
+      onChange={props.onChange}
+    >
       {options}
     </select>
   );
@@ -16,6 +22,7 @@ export default function SelectInput(props) {
 SelectInput.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 SelectInput.defaultProps = {

@@ -1,13 +1,17 @@
 import React, { PropTypes } from 'react';
 
 export default function NumberInput(props) {
-  const { defaultValue, className, placeholder } = props.data;
+  const { placeholder, className } = props.options;
+  const { name, value } = props.data;
+  
   return (
     <input
       type="number"
-      defaultValue={defaultValue}
+      name={name}
+      value={value}
       placeholder={placeholder}
       className={className}
+      onChange={props.onChange}
     />
   );
 }
@@ -15,6 +19,7 @@ export default function NumberInput(props) {
 NumberInput.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 NumberInput.defaultProps = {

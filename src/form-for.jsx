@@ -1,29 +1,51 @@
 import React, { PropTypes } from 'react';
-import autobind from 'autobind-decorator';
 import Input from './input';
 
 export default class FormFor extends React.Component {
-  @autobind
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputs: Object.keys(props.object).reduce((data, key) => {
+        data[key] = props.object[key];
+        return data;
+      }, {}),
+    };
+    this.setInput = this.setInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  setInput(e) {
+    e.preventDefault();
+    const inputs = this.state.inputs;
+    const { type, name, checked, value } = e.target;
+
+    inputs[name] = type === 'checkbox' ? checked : value;
+
+    this.setState(inputs);
+  }
+
   handleSubmit(e) {
     if (e) e.preventDefault();
-    const data = {};
-    this.props.onSubmit(data);
+    this.props.onSubmit(this.state.inputs);
   }
 
   inputs() {
     const object = this.props.object;
     const inputs = [];
     Object.keys(object).forEach((key) => {
-      const value = object[key];
-      const dataForInput = { value, name: key };
+      const value = this.state.inputs[key];
+      const dataForInput = {
+        value: value === undefined ? '' : this.state.inputs[key],
+        name: key,
+      };
       const options = this.props.inputOptions[key] || {};
-      
       inputs.push(
         <Input
           key={key}
           data={dataForInput}
           options={options}
-          label={options.labels}
+          label={this.props.inputOptions.labels}
+          onChange={this.setInput}
         />
       );
     });

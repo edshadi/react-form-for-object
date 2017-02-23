@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 
 export default function DatetimeInput(props) {
-  const { defaultValue, className } = props.data;
+  const { name, value } = props.data;
   return (
     <input
       type="datetime-local"
-      defaultValue={defaultValue}
-      className={className}
+      name={name}
+      value={value}
+      className={props.options.className}
+      onChange={props.onChange}
     />
   );
 }
@@ -14,6 +16,7 @@ export default function DatetimeInput(props) {
 DatetimeInput.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 DatetimeInput.defaultProps = {

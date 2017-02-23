@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react';
 
 export default function HiddenInput(props) {
-  const { value, className } = props.data;
+  const { name, value } = props.data;
+
   return (
     <input
       type="hidden"
+      name={name}
       value={value}
-      className={className}
+      className={props.options.className}
+      onChange={props.onChange}
     />
   );
 }
@@ -14,6 +17,7 @@ export default function HiddenInput(props) {
 HiddenInput.propTypes = {
   data: PropTypes.object.isRequired,
   options: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 };
 
 HiddenInput.defaultProps = {

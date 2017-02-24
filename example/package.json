@@ -39,6 +39,6 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-form-for-object": "file:///Users/apprentice/Development/Github/opensource/react-form-for-object"
+    "react-form-for-object": "2.0.0"
   }
 }

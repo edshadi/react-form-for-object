@@ -52,7 +52,7 @@
     "url": "https://github.com/edshadi/react-form-for-object/issues"
   },
   "homepage": "https://github.com/edshadi/react-form-for-object#readme",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "lib/form-for.js",
   "directories": {
     "example": "example"

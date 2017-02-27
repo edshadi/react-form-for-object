@@ -9,7 +9,7 @@ const config = {
   entry: './src/form-for.jsx',
   output: {
     filename: 'form-for.js',
-    path: path.join(__dirname, 'lib'),
+    path: path.join(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

@@ -5,7 +5,7 @@
     "Ed Shadi <edshadi@gmail.com>"
   ],
   "description": "Rails inspired form builder that makes building forms in React a breeze.",
-  "main": "lib/form-for.js",
+  "main": "dist/form-for.js",
   "keywords": [
     "react",
     "addon",

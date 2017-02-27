@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import FormFor from '../../src/form-for';
+import FormFor from 'react-form-for-object';
 
 const TodoStore = {
   all() {

@@ -32,13 +32,13 @@
     "webpack": "^1.13.2",
     "webpack-dashboard": "^0.1.8",
     "webpack-dev-server": "^1.16.2",
-  "webpack-notifier": "^1.2.1"
+    "webpack-notifier": "^1.2.1"
   },
   "author": "Ed Shadi <edshadi@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-form-for-object": "2.0.0"
+    "react-form-for-object": "file:///Users/apprentice/Development/Github/opensource/react-form-for-object"
   }
 }

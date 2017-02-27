@@ -35,7 +35,7 @@ to text input.
 By default, id attributes are built as hidden input.
 
 ```javascript
-import FormFor from '../../src/form-for';
+import FormFor from 'react-form-for-object';
 
 const todo = {
   name: "Clean my room",
